@@ -34,4 +34,9 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO updateStudentById(StudentDTO studentDTO) {
         return studentRepository.updateStudentById(studentDTO);
     }
+
+    @Override
+    public void deleteStudentById(int id) {
+        studentRepository.deleteStudentById(id);
+    }
 }

@@ -3,7 +3,6 @@ package com.mbpt.skillmentor.root.controller;
 import com.mbpt.skillmentor.root.dto.StudentDTO;
 import com.mbpt.skillmentor.root.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.AliasFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,33 +10,39 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/students")
+@RequestMapping(value = "/students")
 public class StudentController {
 
     @Autowired
     StudentService studentService;
 
     @PostMapping
-    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO) {
         StudentDTO createdStudent = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<StudentDTO>> getAllStudents(){
+    public ResponseEntity<List<StudentDTO>> getAllStudents() {
         List<StudentDTO> studentsList = studentService.getAllStudents();
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Integer id){
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Integer id) {
         StudentDTO retrievedStudent = studentService.getStudentById(id);
         return new ResponseEntity<>(retrievedStudent, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<StudentDTO> updateStudent(@RequestBody StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody StudentDTO studentDTO) {
         StudentDTO updatedStudent = studentService.updateStudentById(studentDTO);
         return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteStudentById(@PathVariable Integer id) {
+        studentService.deleteStudentById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

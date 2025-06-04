@@ -19,7 +19,7 @@ public class StudentRepositoryImpl implements StudentRepository {
         var id = studentList.size() + 1;
         studentDTO.setStudentId(id);
         studentList.add(studentDTO);
-        return studentList.get(id-1);
+        return studentList.get(id - 1);
     }
 
     @Override
@@ -46,5 +46,11 @@ public class StudentRepositoryImpl implements StudentRepository {
             return selectedStudentDTO;
         }
         return null;
+    }
+
+    @Override
+    public void deleteStudentById(int id) {
+        Optional<StudentDTO> selectedStudent = studentList.stream().filter(student -> Objects.equals(student.getStudentId(), id)).findFirst();
+        selectedStudent.ifPresent(studentList::remove);
     }
 }

@@ -13,4 +13,6 @@ public interface StudentRepository {
     StudentDTO getStudentById(int id);
 
     StudentDTO updateStudentById (StudentDTO studentDTO);
+
+    void deleteStudentById(int id);
 }
