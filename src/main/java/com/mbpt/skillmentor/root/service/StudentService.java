@@ -27,5 +27,5 @@ public interface StudentService {
 
     StudentDTO updateStudentById(StudentDTO studentDTO);
 
-    void deleteStudentById(int id);
+    StudentDTO deleteStudentById(int id);
 }

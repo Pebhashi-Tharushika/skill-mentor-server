@@ -49,8 +49,9 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public void deleteStudentById(int id) {
+    public StudentDTO deleteStudentById(int id) {
         Optional<StudentDTO> selectedStudent = studentList.stream().filter(student -> Objects.equals(student.getStudentId(), id)).findFirst();
         selectedStudent.ifPresent(studentList::remove);
+        return selectedStudent.orElse(null);
     }
 }
