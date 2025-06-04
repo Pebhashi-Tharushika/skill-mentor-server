@@ -3,6 +3,8 @@ package com.mbpt.skillmentor.root.service;
 import com.mbpt.skillmentor.root.dto.StudentDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service Interface for managing students.
  * Provides operations to create, retrieve, modify student records.
@@ -18,4 +20,6 @@ public interface StudentService {
      */
 
     StudentDTO createStudent(StudentDTO studentDTO);
+
+    List<StudentDTO> getAllStudents();
 }

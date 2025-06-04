@@ -19,4 +19,9 @@ public class StudentRepositoryImpl implements StudentRepository {
         studentList.add(studentDTO);
         return studentList.get(id-1);
     }
+
+    @Override
+    public List<StudentDTO> getAllStudents() {
+        return studentList;
+    }
 }

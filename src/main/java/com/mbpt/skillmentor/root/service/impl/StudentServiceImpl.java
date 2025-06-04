@@ -19,4 +19,9 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO createStudent(StudentDTO studentDTO) {
         return studentRepository.createStudent(studentDTO);
     }
+
+    @Override
+    public List<StudentDTO> getAllStudents() {
+        return studentRepository.getAllStudents();
+    }
 }

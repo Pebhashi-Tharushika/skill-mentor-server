@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/students")
 public class StudentController {
@@ -22,7 +24,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<String> getAllStudents(){
-        return new ResponseEntity<>("All Students Successfully", HttpStatus.OK);
+    public ResponseEntity<List<StudentDTO>> getAllStudents(){
+        List<StudentDTO> studentsList = studentService.getAllStudents();
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 }
