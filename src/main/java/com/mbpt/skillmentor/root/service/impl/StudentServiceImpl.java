@@ -6,7 +6,6 @@ import com.mbpt.skillmentor.root.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,12 +20,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDTO> getAllStudents() {
-        return studentRepository.getAllStudents();
+    public List<StudentDTO> getAllStudents(Integer age) {
+        return studentRepository.getAllStudents(age);
     }
 
     @Override
-    public StudentDTO getStudentById(int id) {
+    public StudentDTO getStudentById(Integer id) {
         return studentRepository.getStudentById(id);
     }
 
@@ -36,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDTO deleteStudentById(int id) {
+    public StudentDTO deleteStudentById(Integer id) {
         return studentRepository.deleteStudentById(id);
     }
 }

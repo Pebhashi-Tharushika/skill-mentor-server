@@ -23,13 +23,13 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public List<StudentDTO> getAllStudents() {
-        return studentList;
+    public List<StudentDTO> getAllStudents(Integer age) {
+        return studentList.stream().filter(student -> Objects.equals(student.getAge(), age) || age == null).toList();
     }
 
     @Override
-    public StudentDTO getStudentById(int id) {
-        return studentList.stream().filter(student -> student.getStudentId() == id).findFirst().orElse(null);
+    public StudentDTO getStudentById(Integer id) {
+        return studentList.stream().filter(student -> Objects.equals(student.getStudentId(), id)).findFirst().orElse(null);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public StudentDTO deleteStudentById(int id) {
+    public StudentDTO deleteStudentById(Integer id) {
         Optional<StudentDTO> selectedStudent = studentList.stream().filter(student -> Objects.equals(student.getStudentId(), id)).findFirst();
         selectedStudent.ifPresent(studentList::remove);
         return selectedStudent.orElse(null);

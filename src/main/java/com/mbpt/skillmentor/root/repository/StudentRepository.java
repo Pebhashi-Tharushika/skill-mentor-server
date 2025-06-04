@@ -8,11 +8,12 @@ public interface StudentRepository {
 
     StudentDTO createStudent(StudentDTO studentDTO);
 
-    List<StudentDTO> getAllStudents();
+    List<StudentDTO> getAllStudents(Integer age);
 
-    StudentDTO getStudentById(int id);
+    StudentDTO getStudentById(Integer id);
 
     StudentDTO updateStudentById (StudentDTO studentDTO);
 
-    StudentDTO deleteStudentById(int id);
+    StudentDTO deleteStudentById(Integer id);
+
 }

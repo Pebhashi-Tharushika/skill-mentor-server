@@ -1,7 +1,6 @@
 package com.mbpt.skillmentor.root.service;
 
 import com.mbpt.skillmentor.root.dto.StudentDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -21,11 +20,12 @@ public interface StudentService {
 
     StudentDTO createStudent(StudentDTO studentDTO);
 
-    List<StudentDTO> getAllStudents();
+    List<StudentDTO> getAllStudents(Integer age);
 
-    StudentDTO getStudentById(int id);
+    StudentDTO getStudentById(Integer id);
 
     StudentDTO updateStudentById(StudentDTO studentDTO);
 
-    StudentDTO deleteStudentById(int id);
+    StudentDTO deleteStudentById(Integer id);
+
 }
