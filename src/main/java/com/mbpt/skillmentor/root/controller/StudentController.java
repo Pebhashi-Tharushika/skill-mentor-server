@@ -28,4 +28,16 @@ public class StudentController {
         List<StudentDTO> studentsList = studentService.getAllStudents();
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Integer id){
+        StudentDTO retrievedStudent = studentService.getStudentById(id);
+        return new ResponseEntity<>(retrievedStudent, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody StudentDTO studentDTO){
+        StudentDTO updatedStudent = studentService.updateStudentById(studentDTO);
+        return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
+    }
 }

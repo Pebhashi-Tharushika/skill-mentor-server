@@ -24,4 +24,14 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDTO> getAllStudents() {
         return studentRepository.getAllStudents();
     }
+
+    @Override
+    public StudentDTO getStudentById(int id) {
+        return studentRepository.getStudentById(id);
+    }
+
+    @Override
+    public StudentDTO updateStudentById(StudentDTO studentDTO) {
+        return studentRepository.updateStudentById(studentDTO);
+    }
 }

@@ -9,4 +9,8 @@ public interface StudentRepository {
     StudentDTO createStudent(StudentDTO studentDTO);
 
     List<StudentDTO> getAllStudents();
+
+    StudentDTO getStudentById(int id);
+
+    StudentDTO updateStudentById (StudentDTO studentDTO);
 }
