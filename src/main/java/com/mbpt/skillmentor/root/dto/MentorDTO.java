@@ -1,0 +1,23 @@
+package com.mbpt.skillmentor.root.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class MentorDTO {
+    private Integer mentorId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    private String title;
+    private String sessionFee;
+    private String profession;
+    private String subject;
+    private String qualification;
+    private String classRoomId;
+}
