@@ -11,7 +11,7 @@ public interface MentorRepository {
 
     MentorDTO getMentorById(Integer id);
 
-    MentorDTO updateMentorById (MentorDTO mentorDTO);
+    MentorDTO updateMentorById(MentorDTO mentorDTO);
 
     MentorDTO deleteMentorById(Integer id);
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {

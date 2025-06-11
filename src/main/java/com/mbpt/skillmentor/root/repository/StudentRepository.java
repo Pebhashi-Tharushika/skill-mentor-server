@@ -12,7 +12,7 @@ public interface StudentRepository {
 
     StudentDTO getStudentById(Integer id);
 
-    StudentDTO updateStudentById (StudentDTO studentDTO);
+    StudentDTO updateStudentById(StudentDTO studentDTO);
 
     StudentDTO deleteStudentById(Integer id);
 
