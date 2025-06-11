@@ -17,7 +17,7 @@ public class ClassRoomController {
     private ClassRoomService classRoomService;
 
     @PostMapping
-    public ResponseEntity<ClassRoomDTO> createClassRoom(ClassRoomDTO classRoomDTO) {
+    public ResponseEntity<ClassRoomDTO> createClassRoom(@RequestBody ClassRoomDTO classRoomDTO) {
         ClassRoomDTO createdClassRoom = classRoomService.createClassRoom(classRoomDTO);
         return new ResponseEntity<>(createdClassRoom, HttpStatus.CREATED);
     }
@@ -35,7 +35,7 @@ public class ClassRoomController {
     }
 
     @PutMapping
-    public ResponseEntity<ClassRoomDTO> updateClassRoom(ClassRoomDTO classRoomDTO) {
+    public ResponseEntity<ClassRoomDTO> updateClassRoom(@RequestBody ClassRoomDTO classRoomDTO) {
         ClassRoomDTO updatedClassRoom = classRoomService.updateClassRoomById(classRoomDTO);
         return new ResponseEntity<>(updatedClassRoom, HttpStatus.OK);
     }
