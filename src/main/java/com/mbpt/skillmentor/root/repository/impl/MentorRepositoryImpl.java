@@ -36,15 +36,15 @@ public class MentorRepositoryImpl implements MentorRepository {
         Optional<MentorDTO> selectedMentor = mentorList.stream().filter(mentor -> mentor.getMentorId().equals(mentorDTO.getMentorId())).findFirst();
         if (selectedMentor.isPresent()) {
             MentorDTO selectedMentorDTO = selectedMentor.get();
-            mentorDTO.setMentorId(selectedMentorDTO.getMentorId());
-            mentorDTO.setFirstName(selectedMentorDTO.getFirstName());
-            mentorDTO.setLastName(selectedMentorDTO.getLastName());
-            mentorDTO.setEmail(selectedMentorDTO.getEmail());
-            mentorDTO.setAddress(selectedMentorDTO.getAddress());
-            mentorDTO.setTitle(selectedMentorDTO.getTitle());
-            mentorDTO.setProfession(selectedMentorDTO.getProfession());
-            mentorDTO.setSubject(selectedMentorDTO.getSubject());
-            mentorDTO.setQualification(selectedMentorDTO.getQualification());
+            selectedMentorDTO.setMentorId(mentorDTO.getMentorId());
+            selectedMentorDTO.setFirstName(mentorDTO.getFirstName());
+            selectedMentorDTO.setLastName(mentorDTO.getLastName());
+            selectedMentorDTO.setEmail(mentorDTO.getEmail());
+            selectedMentorDTO.setAddress(mentorDTO.getAddress());
+            selectedMentorDTO.setTitle(mentorDTO.getTitle());
+            selectedMentorDTO.setProfession(mentorDTO.getProfession());
+            selectedMentorDTO.setSubject(mentorDTO.getSubject());
+            selectedMentorDTO.setQualification(mentorDTO.getQualification());
             return selectedMentorDTO;
         }
         return null;
