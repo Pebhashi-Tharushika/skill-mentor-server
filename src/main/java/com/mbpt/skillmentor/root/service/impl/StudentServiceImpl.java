@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO getStudentById(Integer id) {
-        return studentRepository.getStudentById(id);
+        return studentDAO.getStudentById(id);
     }
 
     @Override

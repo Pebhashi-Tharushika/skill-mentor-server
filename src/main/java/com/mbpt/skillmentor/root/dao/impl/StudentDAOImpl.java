@@ -71,6 +71,28 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO getStudentById(Integer id) {
+        final String query = "SELECT * FROM student WHERE student_id=?";
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new StudentDTO(
+                            resultSet.getInt("student_id"),
+                            resultSet.getString("first_name"),
+                            resultSet.getString("last_name"),
+                            resultSet.getString("email"),
+                            resultSet.getString("phone_number"),
+                            resultSet.getString("address"),
+                            resultSet.getInt("age"));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
