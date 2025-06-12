@@ -98,6 +98,27 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO updateStudentById(StudentDTO studentDTO) {
+        final String query = "UPDATE student SET first_name=?,last_name=?,email=?,phone_number=?,address=?,age=? WHERE student_id=?";
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, studentDTO.getFirstName());
+            preparedStatement.setString(2, studentDTO.getLastName());
+            preparedStatement.setString(3, studentDTO.getEmail());
+            preparedStatement.setString(4, studentDTO.getPhoneNumber());
+            preparedStatement.setString(5, studentDTO.getAddress());
+            preparedStatement.setInt(6, studentDTO.getAge());
+            preparedStatement.setInt(7, studentDTO.getStudentId());
+
+            int affectedRow = preparedStatement.executeUpdate();
+            if (affectedRow == 1) {
+                return studentDTO;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

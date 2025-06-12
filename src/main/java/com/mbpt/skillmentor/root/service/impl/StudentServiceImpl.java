@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO updateStudentById(StudentDTO studentDTO) {
-        return studentRepository.updateStudentById(studentDTO);
+        return studentDAO.updateStudentById(studentDTO);
     }
 
     @Override
