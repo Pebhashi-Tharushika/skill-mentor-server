@@ -24,7 +24,12 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam(required = false) Integer age) {
-        List<StudentDTO> studentsList = studentService.getAllStudents(age);
+        List<StudentDTO> studentsList;
+        if (age != null) {
+            studentsList = studentService.getStudentsByAge(age);
+        }else{
+            studentsList = studentService.getAllStudents();
+        }
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 

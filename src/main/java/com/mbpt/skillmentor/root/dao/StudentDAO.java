@@ -8,7 +8,9 @@ public interface StudentDAO {
 
     StudentDTO createStudent(StudentDTO studentDTO);
 
-    List<StudentDTO> getAllStudents(Integer age);
+    List<StudentDTO> getAllStudents();
+
+    List<StudentDTO> getStudentsByAge(Integer age);
 
     StudentDTO getStudentById(Integer id);
 
