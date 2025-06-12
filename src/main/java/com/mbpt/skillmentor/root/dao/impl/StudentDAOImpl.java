@@ -124,6 +124,20 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO deleteStudentById(Integer id) {
+        StudentDTO selectedStudent = getStudentById(id);
+        if(selectedStudent == null) return null;
+
+        final  String query = "DELETE FROM student WHERE student_id=?";
+
+        try(Connection connection = databaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1,id);
+            int affectedRows = preparedStatement.executeUpdate();
+            if(affectedRows == 1) return selectedStudent;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
