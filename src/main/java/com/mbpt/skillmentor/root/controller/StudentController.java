@@ -23,8 +23,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StudentDTO>> getAllStudents(@RequestParam(required = false) Integer age) {
-        List<StudentDTO> studentsList = studentService.getAllStudents(age);
+    public ResponseEntity<List<StudentDTO>> getAllStudents() {
+        List<StudentDTO> studentsList = studentService.getAllStudents();
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 

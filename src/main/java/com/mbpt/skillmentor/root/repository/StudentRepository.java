@@ -1,19 +1,13 @@
 package com.mbpt.skillmentor.root.repository;
 
 import com.mbpt.skillmentor.root.dto.StudentDTO;
+import com.mbpt.skillmentor.root.entity.StudentEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface StudentRepository {
-
-    StudentDTO createStudent(StudentDTO studentDTO);
-
-    List<StudentDTO> getAllStudents(Integer age);
-
-    StudentDTO getStudentById(Integer id);
-
-    StudentDTO updateStudentById(StudentDTO studentDTO);
-
-    StudentDTO deleteStudentById(Integer id);
+@Repository
+public interface StudentRepository extends JpaRepository<StudentEntity,Integer> {
 
 }
