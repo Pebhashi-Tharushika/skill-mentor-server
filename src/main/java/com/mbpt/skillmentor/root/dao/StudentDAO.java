@@ -10,8 +10,6 @@ public interface StudentDAO {
 
     List<StudentDTO> getAllStudents();
 
-    List<StudentDTO> getStudentsByAge(Integer age);
-
     StudentDTO getStudentById(Integer id);
 
     StudentDTO updateStudentById(StudentDTO studentDTO);

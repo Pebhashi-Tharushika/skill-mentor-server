@@ -68,33 +68,6 @@ public class StudentDAOImpl implements StudentDAO {
         return studentList;
     }
 
-    @Override
-    public List<StudentDTO> getStudentsByAge(Integer age) {
-        final String query = "SELECT * FROM student WHERE age=?";
-        final ArrayList<StudentDTO> studentList = new ArrayList<>();
-        try (
-                Connection connection = databaseConnection.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                ResultSet resultSet = preparedStatement.executeQuery()
-        ) {
-            preparedStatement.setInt(1, age);
-            while (resultSet.next()) {
-                studentList.add(
-                        new StudentDTO(
-                                resultSet.getInt("student_id"),
-                                resultSet.getString("first_name"),
-                                resultSet.getString("last_name"),
-                                resultSet.getString("email"),
-                                resultSet.getString("phone_number"),
-                                resultSet.getString("address"),
-                                resultSet.getInt("age")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-        return studentList;
-    }
 
     @Override
     public StudentDTO getStudentById(Integer id) {

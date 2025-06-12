@@ -29,11 +29,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDTO> getStudentsByAge(Integer age) {
-        return studentDAO.getStudentsByAge(age);
-    }
-
-    @Override
     public StudentDTO getStudentById(Integer id) {
         return studentRepository.getStudentById(id);
     }

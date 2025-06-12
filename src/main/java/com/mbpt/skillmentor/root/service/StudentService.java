@@ -38,15 +38,6 @@ public interface StudentService {
 
 
     /**
-     * Retrieves all students by age.
-     *
-     * @param age the age to filter students by
-     * @return a list of {@link StudentDTO} objects representing the students whose age matches the specified value
-     */
-    List<StudentDTO> getStudentsByAge(Integer age);
-
-
-    /**
      * Updates an existing student's details.
      *
      * @param studentDTO the data transfer object containing updated student details
