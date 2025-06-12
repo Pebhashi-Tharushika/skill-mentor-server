@@ -1,5 +1,6 @@
 package com.mbpt.skillmentor.root.service.impl;
 
+import com.mbpt.skillmentor.root.dao.StudentDAO;
 import com.mbpt.skillmentor.root.dto.StudentDTO;
 import com.mbpt.skillmentor.root.repository.StudentRepository;
 import com.mbpt.skillmentor.root.service.StudentService;
@@ -14,9 +15,12 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private StudentDAO studentDAO;
+
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
-        return studentRepository.createStudent(studentDTO);
+        return studentDAO.createStudent(studentDTO);
     }
 
     @Override
