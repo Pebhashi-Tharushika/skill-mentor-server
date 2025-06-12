@@ -17,12 +17,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
-        Connection connection = null;
-        PreparedStatement stm = null;
-        try {
-            connection = databaseConnection.getConnection();
-            String query = "INSERT INTO student (first_name, last_name, email, phone_number, address, age) VALUES (?,?,?,?,?,?)";
-            stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+        String query = "INSERT INTO student (first_name, last_name, email, phone_number, address, age) VALUES (?,?,?,?,?,?)";
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             if (stm != null) {
                 stm.setString(1, studentDTO.getFirstName());
                 stm.setString(2, studentDTO.getLastName());
@@ -37,13 +36,6 @@ public class StudentDAOImpl implements StudentDAO {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                if (connection != null) connection.close();
-                if (stm != null) stm.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
 
         return studentDTO;
