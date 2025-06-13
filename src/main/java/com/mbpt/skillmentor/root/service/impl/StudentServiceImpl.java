@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,8 +24,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDTO> getAllStudents() {
-        return studentRepository.findAll().stream().map(StudentEntityDTOMapper::map).toList();
+    public List<StudentDTO> getAllStudents(String address, Integer age) {
+        return studentRepository.findAll()
+                .stream()
+                .filter(entity -> address == null  || Objects.equals(entity.getAddress(), address))
+                .filter(entity ->  age == null || Objects.equals(entity.getAge(), age))
+                .map(StudentEntityDTOMapper::map)
+                .toList();
     }
 
     @Override
