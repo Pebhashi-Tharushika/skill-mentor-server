@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -24,11 +23,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDTO> getAllStudents(String address, Integer age) {
+    public List<StudentDTO> getAllStudents(List<String> address, List<Integer> age) {
         return studentRepository.findAll()
                 .stream()
-                .filter(entity -> address == null  || Objects.equals(entity.getAddress(), address))
-                .filter(entity ->  age == null || Objects.equals(entity.getAge(), age))
+                .filter(entity -> address == null || address.contains(entity.getAddress()))
+                .filter(entity -> age == null || age.contains(entity.getAge()))
                 .map(StudentEntityDTOMapper::map)
                 .toList();
     }
