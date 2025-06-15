@@ -35,7 +35,6 @@ public class ClassRoomRepositoryImpl implements ClassRoomRepository {
         Optional<ClassRoomDTO> selectedClassRoom = classRoomList.stream().filter(classRoom -> classRoom.getClassRoomId().equals(classRoomDTO.getClassRoomId())).findFirst();
         if (selectedClassRoom.isPresent()) {
             ClassRoomDTO selectedClassRoomDTO = selectedClassRoom.get();
-            selectedClassRoomDTO.setMentorId(classRoomDTO.getMentorId());
             selectedClassRoomDTO.setTitle(classRoomDTO.getTitle());
             selectedClassRoomDTO.setSessionFee(classRoomDTO.getSessionFee());
             selectedClassRoomDTO.setEnrolledStudentCount(classRoomDTO.getEnrolledStudentCount());

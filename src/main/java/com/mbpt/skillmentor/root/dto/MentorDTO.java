@@ -17,5 +17,4 @@ public class MentorDTO {
     private String profession;
     private String subject;
     private String qualification;
-
 }

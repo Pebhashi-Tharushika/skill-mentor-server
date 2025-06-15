@@ -35,20 +35,32 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO getStudentById(Integer id) {
         Optional<StudentEntity> optionalStudentEntity = studentRepository.findById(id);
-        return optionalStudentEntity.map(StudentEntityDTOMapper::map).orElse(null);
+        if (optionalStudentEntity.isEmpty()) throw new RuntimeException("Student Not Found");
+        return StudentEntityDTOMapper.map(optionalStudentEntity.get());
     }
 
     @Override
     public StudentDTO updateStudentById(StudentDTO studentDTO) {
-        StudentDTO deletedStudentDTO = getStudentById(studentDTO.getStudentId());
-        if (deletedStudentDTO == null) return null;
-        return StudentEntityDTOMapper.map(studentRepository.save(StudentEntityDTOMapper.map(studentDTO)));
+        Optional<StudentEntity> optionalStudentEntity = studentRepository.findById(studentDTO.getStudentId());
+
+        if (optionalStudentEntity.isEmpty()) throw new RuntimeException("Student Not Found");
+
+        StudentEntity selectedStudentEntity = optionalStudentEntity.get();
+        selectedStudentEntity.setFirstName(studentDTO.getFirstName());
+        selectedStudentEntity.setLastName(studentDTO.getLastName());
+        selectedStudentEntity.setEmail(studentDTO.getEmail());
+        selectedStudentEntity.setAddress(studentDTO.getAddress());
+        selectedStudentEntity.setPhoneNumber(studentDTO.getPhoneNumber());
+        selectedStudentEntity.setAge(studentDTO.getAge());
+
+        return StudentEntityDTOMapper.map(studentRepository.save(selectedStudentEntity));
     }
 
     @Override
     public StudentDTO deleteStudentById(Integer id) {
-        StudentDTO deletedStudentDTO = getStudentById(id);
+        Optional<StudentEntity> optionalStudentEntity = studentRepository.findById(id);
+        if (optionalStudentEntity.isEmpty()) throw new RuntimeException("Student Not Found");
         studentRepository.deleteById(id);
-        return deletedStudentDTO;
+        return StudentEntityDTOMapper.map(optionalStudentEntity.get());
     }
 }

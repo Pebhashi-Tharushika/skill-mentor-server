@@ -12,5 +12,4 @@ public class ClassRoomDTO {
     private String title;
     private Double sessionFee;
     private Integer enrolledStudentCount;
-    private Integer mentorId;
 }

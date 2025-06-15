@@ -16,5 +16,4 @@ public class StudentDTO {
     private String phoneNumber;
     private String address;
     private Integer age;
-
 }

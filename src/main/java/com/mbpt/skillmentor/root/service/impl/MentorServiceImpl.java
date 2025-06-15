@@ -33,36 +33,33 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public MentorDTO getMentorById(Integer id) {
         Optional<MentorEntity> optionalMentorEntity = mentorRepository.findById(id);
-        if(optionalMentorEntity.isEmpty()) {
-            throw new RuntimeException("Mentor Not Found");
-        }
+        if (optionalMentorEntity.isEmpty()) throw new RuntimeException("Mentor Not Found");
         return MentorEntityDTOMapper.map(optionalMentorEntity.get());
     }
 
     @Override
     public MentorDTO updateMentorById(MentorDTO mentorDTO) {
         Optional<MentorEntity> optionalMentorEntity = mentorRepository.findById(mentorDTO.getMentorId());
-        if(optionalMentorEntity.isEmpty()) {
-            throw new RuntimeException("Mentor Not Found");
-        }
+
+        if (optionalMentorEntity.isEmpty()) throw new RuntimeException("Mentor Not Found");
+
         MentorEntity selectedMentorEntity = optionalMentorEntity.get();
-            selectedMentorEntity.setFirstName(mentorDTO.getFirstName());
-            selectedMentorEntity.setLastName(mentorDTO.getLastName());
-            selectedMentorEntity.setEmail(mentorDTO.getEmail());
-            selectedMentorEntity.setAddress(mentorDTO.getAddress());
-            selectedMentorEntity.setTitle(mentorDTO.getTitle());
-            selectedMentorEntity.setProfession(mentorDTO.getProfession());
-            selectedMentorEntity.setSubject(mentorDTO.getSubject());
-            selectedMentorEntity.setQualification(mentorDTO.getQualification());
+        selectedMentorEntity.setFirstName(mentorDTO.getFirstName());
+        selectedMentorEntity.setLastName(mentorDTO.getLastName());
+        selectedMentorEntity.setEmail(mentorDTO.getEmail());
+        selectedMentorEntity.setAddress(mentorDTO.getAddress());
+        selectedMentorEntity.setTitle(mentorDTO.getTitle());
+        selectedMentorEntity.setProfession(mentorDTO.getProfession());
+        selectedMentorEntity.setSubject(mentorDTO.getSubject());
+        selectedMentorEntity.setQualification(mentorDTO.getQualification());
+
         return MentorEntityDTOMapper.map(mentorRepository.save(selectedMentorEntity));
     }
 
     @Override
     public MentorDTO deleteMentorById(Integer id) {
         Optional<MentorEntity> optionalMentorEntity = mentorRepository.findById(id);
-        if(optionalMentorEntity.isEmpty()) {
-            throw new RuntimeException("Mentor Not Found");
-        }
+        if (optionalMentorEntity.isEmpty()) throw new RuntimeException("Mentor Not Found");
         mentorRepository.deleteById(id);
         return MentorEntityDTOMapper.map(optionalMentorEntity.get());
     }
