@@ -6,15 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "students")
+@Table(name = "mentors")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentEntity {
+public class MentorEntity {
 
     @Id
+    @Column(name = "mentor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentId;
+    private Integer mentorId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -25,12 +26,18 @@ public class StudentEntity {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
     @Column(name = "address")
     private String address;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "profession")
+    private String profession;
+
+    @Column(name = "subject")
+    private String subject;
+
+    @Column(name = "qualification")
+    private String qualification;
 }
