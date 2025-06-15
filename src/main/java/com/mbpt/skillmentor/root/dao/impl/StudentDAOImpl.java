@@ -19,7 +19,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
 
-        String query = "INSERT INTO student (first_name, last_name, email, phone_number, address, age) VALUES (?,?,?,?,?,?)";
+        final String query = "INSERT INTO students (first_name, last_name, email, phone_number, address, age) VALUES (?,?,?,?,?,?)";
 
         try (Connection connection = databaseConnection.getConnection();
              PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -42,7 +42,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<StudentDTO> getAllStudents() {
-        final String query = "SELECT * FROM student";
+        final String query = "SELECT * FROM students";
         final List<StudentDTO> studentList = new ArrayList<>();
 
         try (Connection connection = databaseConnection.getConnection();
@@ -71,7 +71,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO getStudentById(Integer id) {
-        final String query = "SELECT * FROM student WHERE student_id=?";
+        final String query = "SELECT * FROM students WHERE student_id=?";
 
         try (Connection connection = databaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -98,7 +98,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public StudentDTO updateStudentById(StudentDTO studentDTO) {
-        final String query = "UPDATE student SET first_name=?,last_name=?,email=?,phone_number=?,address=?,age=? WHERE student_id=?";
+        final String query = "UPDATE students SET first_name=?,last_name=?,email=?,phone_number=?,address=?,age=? WHERE student_id=?";
 
         try (Connection connection = databaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -127,7 +127,7 @@ public class StudentDAOImpl implements StudentDAO {
         StudentDTO selectedStudent = getStudentById(id);
         if(selectedStudent == null) return null;
 
-        final  String query = "DELETE FROM student WHERE student_id=?";
+        final  String query = "DELETE FROM students WHERE student_id=?";
 
         try(Connection connection = databaseConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)){

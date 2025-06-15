@@ -1,10 +1,10 @@
-package com.mbpt.skillmentor.root.repository;
+package com.mbpt.skillmentor.root.dao;
 
 import com.mbpt.skillmentor.root.dto.MentorDTO;
 
 import java.util.List;
 
-public interface MentorRepository {
+public interface MentorDAO {
     MentorDTO createMentor(MentorDTO mentorDTO);
 
     List<MentorDTO> getAllMentors();
@@ -14,5 +14,4 @@ public interface MentorRepository {
     MentorDTO updateMentorById(MentorDTO mentorDTO);
 
     MentorDTO deleteMentorById(Integer id);
-
 }
