@@ -1,10 +1,10 @@
-package com.mbpt.skillmentor.root.repository;
+package com.mbpt.skillmentor.root.dao;
 
 import com.mbpt.skillmentor.root.dto.ClassRoomDTO;
 
 import java.util.List;
 
-public interface ClassRoomRepository {
+public interface ClassRoomDAO {
 
     ClassRoomDTO createClassRoom(ClassRoomDTO classRoomDTO);
 
@@ -15,5 +15,4 @@ public interface ClassRoomRepository {
     ClassRoomDTO updateClassRoomById(ClassRoomDTO classRoomDTO);
 
     ClassRoomDTO deleteClassRoomById(Integer id);
-
 }
